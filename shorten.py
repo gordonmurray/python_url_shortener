@@ -35,10 +35,15 @@ def shorten():
 def catch_all(short_url):
     existing_url_record = query_db('select url from shorten where short = ?', (short_url,), one=True)
     if existing_url_record is None:
-        long_url = '/'
+        long_url = '/nope'
     else:
         long_url = existing_url_record[0]
     return redirect(long_url, code=302)
+
+
+@app.route('/nope')
+def nope():
+    return render_template('404.html'), 404
 
 
 def shorten_url(x):
@@ -46,7 +51,7 @@ def shorten_url(x):
 
 
 def connect_db():
-    return sqlite3.connect('shorten.db')
+    return sqlite3.connect(DATABASE)
 
 
 def get_db():
