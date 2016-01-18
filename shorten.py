@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, g, redirect
 
 # configuration
 DATABASE = 'shorten.db'
-DEBUG = True
+DEBUG = False
 SECRET_KEY = 'mysecret'
 USERNAME = 'root'
 PASSWORD = 'password'
@@ -94,4 +94,4 @@ def teardown_request(exception):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
