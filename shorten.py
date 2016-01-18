@@ -1,4 +1,6 @@
 import sqlite3
+import string
+import random
 from flask import Flask, render_template, request, g, redirect
 
 # configuration
@@ -40,7 +42,6 @@ def catch_all(short_url):
 
 
 def shorten_url(x):
-    import string, random
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(x))
 
 
